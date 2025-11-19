@@ -1,50 +1,70 @@
-/* General Page Styling */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-}
-
 /* Navigation Bar */
-nav {
-  background-color: #4a90e2;
-  padding: 15px;
-  text-align: center;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    padding: 15px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 18px;
-  font-weight: bold;
+.navbar .logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-nav a:hover {
-  text-decoration: underline;
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
-/* Page Container */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
 
-/* Headings */
-h1, h2 {
-  color: #4a90e2;
+.navbar ul li a.active,
+.navbar ul li a:hover {
+    color: #3498db;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  background: #ddd;
-  font-size: 14px;
+/* Page Title */
+.page-title {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    color: #2c3e50;
+}
+
+/* PG Cards */
+.pg-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    margin: 25px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.pg-card h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #217dbb;
 }
