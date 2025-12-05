@@ -99,3 +99,55 @@ html,body{height:100%; margin:0; background:linear-gradient(180deg,#f6f8fb 0%, #
   .quick-stats{flex-direction:column; gap:8px}
   .mobile-quick a{padding:12px 8px; font-size:14px}
 }
+/* === MOBILE ENHANCEMENTS (paste at end of styles.css) === */
+
+/* Increase tappable areas and slightly larger text for small screens */
+@media (max-width:480px){
+  :root{ --accent-font-size:16px; --body-font-size:15px; }
+  body { font-size: var(--body-font-size); }
+  a.btn-primary, .mobile-quick a, .menu a, .small-btn {
+    padding: 14px 16px !important;
+    font-size: 15px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Bigger hero spacing on small phones */
+  .hero { padding: 20px 12px; }
+  .hero-left h1 { font-size: 20px; line-height:1.08; }
+  .lead { font-size: 14px; }
+
+  /* Make cards taller and easier to tap */
+  .card { border-radius: 12px; overflow: hidden; }
+  .card-body { padding: 14px; }
+  .card-photo { height: 160px; }
+
+  /* Make list items / links full-width touch targets */
+  .svc, .card, .card-body a, .cards-grid article { display: block; width:100%; }
+
+  /* Sticky bottom quick actions — full width row */
+  .mobile-quick {
+    left:0; right:0; transform:none; bottom:0;
+    background:linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+    padding:8px; display:flex; gap:8px; justify-content:space-around;
+    box-shadow:0 -8px 30px rgba(10,20,40,0.06); border-radius:12px 12px 0 0;
+  }
+  .mobile-quick a { flex:1; margin:0 6px; padding:12px 6px; font-size:14px; }
+
+  /* Reduce nav clutter, use hamburger */
+  .menu { display: none; }
+  .nav-toggle { display:block; font-size:20px; padding:8px; }
+
+  /* Forms — larger input sizes */
+  .contact-grid input, .contact-grid textarea {
+    font-size:15px; padding:14px; border-radius:12px;
+  }
+
+  /* Ensure images are responsive and hardware-accelerated */
+  img { max-width:100%; height:auto; -webkit-transform: translateZ(0); transform: translateZ(0); image-rendering: auto; }
+
+  /* Increase line-height for readability */
+  p, li { line-height:1.5; }
+}
+
+/* Light touch visual feedback */
+a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.08); }
