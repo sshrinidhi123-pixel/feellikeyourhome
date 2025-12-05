@@ -3,148 +3,172 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stayease — Find PGs, Roommates & Home Services</title>
+  <title>Stayease — Find PGs, Roommates & Trusted Services</title>
+  <meta name="description" content="Find verified PGs near you, match roommates, and book trusted local services like plumbers & carpenters."/>
   <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="Find verified PGs, match roommates, and book trusted home services nearby."/>
 </head>
 <body>
-  <header class="topbar">
+  <header class="topbar" role="banner">
     <div class="container nav">
       <a class="brand" href="/">Stayease</a>
-      <nav class="menu">
+      <nav class="menu" id="menu" aria-label="Main navigation">
         <a href="#listings">PGs</a>
-        <a href="#roommate">Roommate Match</a>
-        <a href="#services">Home Services</a>
+        <a href="#roommate">Roommate</a>
+        <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a class="btn-outline" href="#owner">Owner Login</a>
+        <a class="btn-outline" href="#owner">Owner</a>
       </nav>
-      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" id="navToggle">☰</button>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-left">
-          <h1>Find verified PGs, match roommates, and get trusted home services — all in one place.</h1>
-          <p class="lead">Search verified PGs near you, swipe to find compatible roommates, or book carpenters, plumbers and electricians instantly.</p>
+          <h1>Move in faster. Live easier.</h1>
+          <p class="lead">Search verified PGs, swipe to find compatible roommates, and book trusted home services — all from your phone.</p>
           <div class="hero-cta">
             <a class="btn-primary" href="#listings">Search PGs</a>
             <a class="btn-ghost" href="#roommate">Find Roommate</a>
           </div>
-          <ul class="trust">
-            <li>Verified Listings</li>
-            <li>Secure Booking</li>
-            <li>Ratings & Reviews</li>
+
+          <ul class="trust" aria-hidden="true">
+            <li>Verified listings</li>
+            <li>Secure payments</li>
+            <li>24/7 support</li>
           </ul>
+
+          <div class="quick-stats" aria-hidden="true">
+            <div><strong>1,200+</strong><span>Listings</span></div>
+            <div><strong>8,000+</strong><span>Users</span></div>
+            <div><strong>4.5★</strong><span>Avg. rating</span></div>
+          </div>
         </div>
-        <div class="hero-right">
-          <div class="mock-card">
-            <div class="mock-photo">PG • ₹6,500 / mo</div>
-            <div class="mock-content">
-              <h3>Single Room near Jayanagar</h3>
-              <p>AC, Food available, 5 min from college. Verified host.</p>
-              <div class="mock-meta">
-                <span>2 beds left</span>
-                <a class="small-btn" href="#listings">Book</a>
+
+        <div class="hero-right" aria-hidden="true">
+          <div class="hero-card">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Room sample" />
+            <div class="hero-card-body">
+              <h3>Cozy single room — Jayanagar</h3>
+              <p>AC • Food available • 5 mins to college</p>
+              <div class="card-meta">
+                <span>₹6,500 / mo</span>
+                <a class="small-btn" href="#listings">View</a>
               </div>
             </div>
           </div>
-          <div class="features-inline">
-            <div class="f"><strong>Roommates</strong><br/>Hobby tags & swipe</div>
-            <div class="f"><strong>Services</strong><br/>Plumber, Carpenter</div>
-            <div class="f"><strong>Owners</strong><br/>Dashboard & billing</div>
+
+          <div class="feature-row">
+            <div class="f">
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="" />
+              <div><strong>Roommates</strong><small>Swipe & match</small></div>
+            </div>
+            <div class="f">
+              <img src="https://images.unsplash.com/photo-1581091012184-7a0b6b2b1c3f?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="" />
+              <div><strong>Services</strong><small>Plumber • Carpenter</small></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- LISTINGS -->
     <section id="listings" class="section container">
       <h2>Featured PGs</h2>
-      <div class="cards-grid">
+      <p class="muted">Verified, nearby and student-friendly places.</p>
+      <div class="cards-grid" aria-live="polite">
         <article class="card">
-          <div class="card-photo">Image</div>
-          <h3>PG near M.G. Road</h3>
-          <p>Rent ₹7,000 · Food included · Wi-Fi</p>
-          <div class="card-footer">
-            <span>4.3 ★</span>
-            <a class="small-btn" href="#">View</a>
+          <img class="card-photo" loading="lazy" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="PG near MG Road">
+          <div class="card-body">
+            <h3>PG near M.G. Road</h3>
+            <p>Rent ₹7,000 · Food included · Wi-Fi</p>
+            <div class="card-footer">
+              <span class="rating">4.3 ★</span>
+              <a class="small-btn" href="#">View</a>
+            </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="card-photo">Image</div>
-          <h3>Shared Room near Bannerghatta</h3>
-          <p>Rent ₹4,500 · Female only · Laundry nearby</p>
-          <div class="card-footer">
-            <span>4.0 ★</span>
-            <a class="small-btn" href="#">View</a>
+          <img class="card-photo" loading="lazy" src="https://images.unsplash.com/photo-1598928506312-3b0a6a0b0d7b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Shared room Bannerghatta">
+          <div class="card-body">
+            <h3>Shared room — Bannerghatta</h3>
+            <p>Rent ₹4,500 · Female only · Laundry nearby</p>
+            <div class="card-footer">
+              <span class="rating">4.0 ★</span>
+              <a class="small-btn" href="#">View</a>
+            </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="card-photo">Image</div>
-          <h3>Studio near Electronic City</h3>
-          <p>Rent ₹9,000 · Private bathroom</p>
-          <div class="card-footer">
-            <span>4.6 ★</span>
-            <a class="small-btn" href="#">View</a>
+          <img class="card-photo" loading="lazy" src="https://images.unsplash.com/photo-1560449756-4285f0d6a8c6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Studio Electronic City">
+          <div class="card-body">
+            <h3>Studio — Electronic City</h3>
+            <p>Rent ₹9,000 · Private bathroom</p>
+            <div class="card-footer">
+              <span class="rating">4.6 ★</span>
+              <a class="small-btn" href="#">View</a>
+            </div>
           </div>
         </article>
       </div>
       <div class="center"><a class="btn-primary" href="#listings">See all listings</a></div>
     </section>
 
+    <!-- ROOMMATE -->
     <section id="roommate" class="section alt container">
       <h2>Roommate Match</h2>
+      <p class="muted">Create a profile with hobbies, cleanliness level and schedule — then swipe to match.</p>
       <div class="two-col">
         <div>
-          <p>Create a short profile — hobbies, cleanliness, sleep schedule, budget — and browse matches. Messaging opens only after mutual likes.</p>
           <ul class="bullets">
-            <li>Swipe style discovery or list view</li>
-            <li>Compatibility score & verification badges</li>
-            <li>Report/block & privacy settings</li>
+            <li>Swipe cards or list view</li>
+            <li>Mutual likes open chat</li>
+            <li>Verified badges & privacy controls</li>
           </ul>
           <a class="btn-primary" href="#roommate">Create profile</a>
         </div>
-        <div class="card small">
+
+        <div class="card small" aria-hidden="true">
           <div class="avatar">A</div>
-          <h4>Ashwin, 22</h4>
-          <p>Hobbies: Music • Cricket • Early riser • Non-smoker</p>
-          <div class="compat">Compatibility: 84%</div>
+          <div style="flex:1;">
+            <h4>Ashwin, 22</h4>
+            <p class="muted">Music · Early riser · Non-smoker</p>
+            <div class="compat">Compatibility: <strong>84%</strong></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="section container">
       <h2>Home Services</h2>
-      <p>Book trusted carpenters, plumbers, electricians, AC repair and more — pay online or cash on delivery.</p>
+      <p class="muted">Trusted local carpenters, plumbers, electricians — book and pay securely.</p>
       <div class="services-grid">
-        <div class="svc">Plumber</div>
-        <div class="svc">Carpenter</div>
-        <div class="svc">Electrician</div>
-        <div class="svc">AC Repair</div>
-        <div class="svc">Cleaning</div>
-        <div class="svc">Pest Control</div>
+        <a class="svc" href="#services">Plumber</a>
+        <a class="svc" href="#services">Carpenter</a>
+        <a class="svc" href="#services">Electrician</a>
+        <a class="svc" href="#services">AC Repair</a>
+        <a class="svc" href="#services">Cleaning</a>
+        <a class="svc" href="#services">Pest Control</a>
       </div>
       <div class="center"><a class="btn-ghost" href="#services">Book a service</a></div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="section alt container">
       <h2>About Stayease</h2>
-      <p>We help students and professionals find affordable, verified PGs and compatible roommates — plus trusted local home services for repairs and maintenance. Built with a mobile-first experience and owner-friendly dashboards.</p>
+      <p>We help students & professionals find verified PGs, compatible roommates and trusted home services — with a mobile-first experience for quick decisions.</p>
       <div class="two-col">
-        <div>
-          <h4>For Tenants</h4>
-          <p>Search, compare, verify and book with transparent pricing and reviews.</p>
-        </div>
-        <div>
-          <h4>For Owners</h4>
-          <p>List rooms, update availability, and use analytics to keep occupancy high.</p>
-        </div>
+        <div><h4>For Tenants</h4><p class="muted">Search, compare and book with verified hosts and transparent pricing.</p></div>
+        <div><h4>For Owners</h4><p class="muted">List rooms, manage occupancy and collect payments easily.</p></div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section container">
       <h2>Contact</h2>
       <form id="contactForm" class="contact-grid" onsubmit="handleContact(event)">
@@ -156,12 +180,12 @@
     </section>
   </main>
 
-  <footer class="sitefoot">
+  <footer class="sitefoot" role="contentinfo">
     <div class="container">
       <div class="foot-grid">
         <div>
           <strong>Stayease</strong>
-          <p>Find PGs • Roommates • Home services</p>
+          <p class="muted">Find PGs • Roommates • Home services</p>
         </div>
         <div>
           <p><a href="#owner">Owner Login</a></p>
@@ -174,18 +198,32 @@
     </div>
   </footer>
 
+  <!-- Sticky quick actions for mobile -->
+  <div class="mobile-quick" aria-hidden="true">
+    <a href="#listings" title="Search PGs">🔎 Search</a>
+    <a href="#roommate" title="Find Roommate">🤝 Match</a>
+    <a href="#services" title="Services">🛠️ Services</a>
+  </div>
+
 <script>
-  // simple nav toggle for mobile
-  const btn = document.querySelector('.nav-toggle');
-  const menu = document.querySelector('.menu');
-  btn.addEventListener('click', ()=> menu.classList.toggle('open'));
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const menu = document.getElementById('menu');
+  navToggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 
   function handleContact(e){
     e.preventDefault();
-    const form = e.target;
-    alert('Thanks! Message received. (This is a demo — integrate your email/API)');
-    form.reset();
+    const f = e.target;
+    // Demo: show toast. Replace with API call later.
+    alert('Thank you! Message received — we will contact you soon.');
+    f.reset();
   }
+
+  // small lazy load / UX improvement if JS enabled
+  document.documentElement.classList.add('js-enabled');
 </script>
 </body>
 </html>
