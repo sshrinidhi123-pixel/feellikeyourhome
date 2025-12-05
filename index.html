@@ -225,5 +225,37 @@
   // small lazy load / UX improvement if JS enabled
   document.documentElement.classList.add('js-enabled');
 </script>
+  <script>
+/* === Mobile helper: responsive image swap & menu behavior === */
+(function(){
+  // menu toggle (works if #navToggle and #menu exist)
+  const toggle = document.getElementById && document.getElementById('navToggle');
+  const menu = document.getElementById && document.getElementById('menu');
+  if(toggle && menu){
+    toggle.addEventListener('click', ()=>{
+      const isOpen = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      // move focus for accessibility
+      if(isOpen) menu.querySelector('a')?.focus();
+    });
+  }
+
+  // responsive hero image swap
+  function swapHeroImages(){
+    const imgs = document.querySelectorAll('img[src*="images.unsplash.com"]');
+    if(window.innerWidth <= 420){
+      imgs.forEach(img=>{
+        // request smaller width images from Unsplash by changing 'w=' param or use the same but rely on natural scaling
+        const src = img.src.replace(/w=\d+/, 'w=640');
+        img.src = src;
+      });
+    }
+  }
+  swapHeroImages();
+  window.addEventListener('resize', swapHeroImages);
+})();
+</script>
+
 </body>
 </html>
+
