@@ -1,29 +1,191 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>FeelLikeYourHome - Home</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stayease — Find PGs, Roommates & Home Services</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Find verified PGs, match roommates, and book trusted home services nearby."/>
 </head>
 <body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/">Stayease</a>
+      <nav class="menu">
+        <a href="#listings">PGs</a>
+        <a href="#roommate">Roommate Match</a>
+        <a href="#services">Home Services</a>
+        <a href="#about">About</a>
+        <a class="btn-outline" href="#owner">Owner Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
 
-<!-- Navigation Bar -->
-<div class="navbar">
-    <div class="logo">FeelLikeYourHome</div>
-    <ul>
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="pgs.html">PGs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>Find verified PGs, match roommates, and get trusted home services — all in one place.</h1>
+          <p class="lead">Search verified PGs near you, swipe to find compatible roommates, or book carpenters, plumbers and electricians instantly.</p>
+          <div class="hero-cta">
+            <a class="btn-primary" href="#listings">Search PGs</a>
+            <a class="btn-ghost" href="#roommate">Find Roommate</a>
+          </div>
+          <ul class="trust">
+            <li>Verified Listings</li>
+            <li>Secure Booking</li>
+            <li>Ratings & Reviews</li>
+          </ul>
+        </div>
+        <div class="hero-right">
+          <div class="mock-card">
+            <div class="mock-photo">PG • ₹6,500 / mo</div>
+            <div class="mock-content">
+              <h3>Single Room near Jayanagar</h3>
+              <p>AC, Food available, 5 min from college. Verified host.</p>
+              <div class="mock-meta">
+                <span>2 beds left</span>
+                <a class="small-btn" href="#listings">Book</a>
+              </div>
+            </div>
+          </div>
+          <div class="features-inline">
+            <div class="f"><strong>Roommates</strong><br/>Hobby tags & swipe</div>
+            <div class="f"><strong>Services</strong><br/>Plumber, Carpenter</div>
+            <div class="f"><strong>Owners</strong><br/>Dashboard & billing</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<h1 class="page-title">Welcome to FeelLikeYourHome</h1>
+    <section id="listings" class="section container">
+      <h2>Featured PGs</h2>
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-photo">Image</div>
+          <h3>PG near M.G. Road</h3>
+          <p>Rent ₹7,000 · Food included · Wi-Fi</p>
+          <div class="card-footer">
+            <span>4.3 ★</span>
+            <a class="small-btn" href="#">View</a>
+          </div>
+        </article>
 
-<div class="pg-card">
-    <h2>Your Comfortable Stay Starts Here!</h2>
-    <p>Find affordable and verified PGs across Bangalore for students and working professionals.</p>
-    <a class="btn" href="pgs.html">Explore PGs</a>
-</div>
+        <article class="card">
+          <div class="card-photo">Image</div>
+          <h3>Shared Room near Bannerghatta</h3>
+          <p>Rent ₹4,500 · Female only · Laundry nearby</p>
+          <div class="card-footer">
+            <span>4.0 ★</span>
+            <a class="small-btn" href="#">View</a>
+          </div>
+        </article>
 
+        <article class="card">
+          <div class="card-photo">Image</div>
+          <h3>Studio near Electronic City</h3>
+          <p>Rent ₹9,000 · Private bathroom</p>
+          <div class="card-footer">
+            <span>4.6 ★</span>
+            <a class="small-btn" href="#">View</a>
+          </div>
+        </article>
+      </div>
+      <div class="center"><a class="btn-primary" href="#listings">See all listings</a></div>
+    </section>
+
+    <section id="roommate" class="section alt container">
+      <h2>Roommate Match</h2>
+      <div class="two-col">
+        <div>
+          <p>Create a short profile — hobbies, cleanliness, sleep schedule, budget — and browse matches. Messaging opens only after mutual likes.</p>
+          <ul class="bullets">
+            <li>Swipe style discovery or list view</li>
+            <li>Compatibility score & verification badges</li>
+            <li>Report/block & privacy settings</li>
+          </ul>
+          <a class="btn-primary" href="#roommate">Create profile</a>
+        </div>
+        <div class="card small">
+          <div class="avatar">A</div>
+          <h4>Ashwin, 22</h4>
+          <p>Hobbies: Music • Cricket • Early riser • Non-smoker</p>
+          <div class="compat">Compatibility: 84%</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section container">
+      <h2>Home Services</h2>
+      <p>Book trusted carpenters, plumbers, electricians, AC repair and more — pay online or cash on delivery.</p>
+      <div class="services-grid">
+        <div class="svc">Plumber</div>
+        <div class="svc">Carpenter</div>
+        <div class="svc">Electrician</div>
+        <div class="svc">AC Repair</div>
+        <div class="svc">Cleaning</div>
+        <div class="svc">Pest Control</div>
+      </div>
+      <div class="center"><a class="btn-ghost" href="#services">Book a service</a></div>
+    </section>
+
+    <section id="about" class="section alt container">
+      <h2>About Stayease</h2>
+      <p>We help students and professionals find affordable, verified PGs and compatible roommates — plus trusted local home services for repairs and maintenance. Built with a mobile-first experience and owner-friendly dashboards.</p>
+      <div class="two-col">
+        <div>
+          <h4>For Tenants</h4>
+          <p>Search, compare, verify and book with transparent pricing and reviews.</p>
+        </div>
+        <div>
+          <h4>For Owners</h4>
+          <p>List rooms, update availability, and use analytics to keep occupancy high.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <form id="contactForm" class="contact-grid" onsubmit="handleContact(event)">
+        <input name="name" placeholder="Your name" required />
+        <input name="email" placeholder="Email or phone" required />
+        <textarea name="message" rows="3" placeholder="Message"></textarea>
+        <div class="center"><button class="btn-primary" type="submit">Send message</button></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="sitefoot">
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stayease</strong>
+          <p>Find PGs • Roommates • Home services</p>
+        </div>
+        <div>
+          <p><a href="#owner">Owner Login</a></p>
+          <p><a href="#about">About</a></p>
+        </div>
+        <div>
+          <p>© Stayease</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // simple nav toggle for mobile
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.menu');
+  btn.addEventListener('click', ()=> menu.classList.toggle('open'));
+
+  function handleContact(e){
+    e.preventDefault();
+    const form = e.target;
+    alert('Thanks! Message received. (This is a demo — integrate your email/API)');
+    form.reset();
+  }
+</script>
 </body>
 </html>
