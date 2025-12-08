@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FeelLikeYourHome – PGs, Roommates & Home Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --accent: #f97316;
+      --dark: #0f172a;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --bg: #f3f4f6;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #fee2e2 0, #f9fafb 40%, #e0f2fe 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(249, 250, 251, 0.9);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #fb923c, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.8rem;
+      box-shadow: 0 8px 18px rgba(248, 113, 113, 0.4);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      padding: 0.55rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #e5e7eb;
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background: #f3f4f6;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-accent {
+      background: linear-gradient(135deg, #fb923c, #f97316);
+      color: white;
+      box-shadow: 0 10px 20px rgba(248, 113, 113, 0.35);
+    }
+
+    .btn-accent:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 15px 30px rgba(248, 113, 113, 0.45);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1120px;
+      margin: 1.2rem auto 1.6rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(248, 113, 113, 0.08);
+      color: #b91c1c;
+      font-size: 0.75rem;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--dark);
+    }
+
+    .hero-title span {
+      color: #f97316;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-badges span {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 0.7rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-meta strong {
+      color: var(--dark);
+      font-size: 0.8rem;
+    }
+
+    /* SEARCH CARD */
+    .search-card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .search-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-tabs {
+      display: inline-flex;
+      padding: 0.2rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      gap: 0.2rem;
+    }
+
+    .search-tab {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #1d4ed8;
+    }
+
+    .search-tab.active {
+      background: white;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.16);
+      font-weight: 600;
+    }
+
+    .search-fields {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 0.75rem;
+    }
+
+    .field-label {
+      color: var(--muted);
+    }
+
+    .field-input,
+    select {
+      padding: 0.5rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      outline: none;
+      font-size: 0.8rem;
+      background: #f9fafb;
+    }
+
+    .field-input:focus,
+    select:focus {
+      border-color: #2563eb;
+      background: white;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.12);
+    }
+
+    .tagline {
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tagline span.highlight {
+      color: #15803d;
+      font-weight: 600;
+    }
+
+    /* MAIN SECTIONS */
+    .section {
+      max-width: 1120px;
+      margin: 0 auto 1.8rem;
+      padding: 0 1rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .section-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8rem;
+    }
+
+    .card-image {
+      position: relative;
+      height: 150px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+    }
+
+    .card-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+          circle at 10% 20%,
+          rgba(255, 255, 255, 0.18) 0,
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 80% 0%,
+          rgba(251, 113, 133, 0.3) 0,
+          transparent 55%
+        );
+      opacity: 0.7;
+    }
+
+    .card-tag {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+      font-size: 0.65rem;
+    }
+
+    .card-badge {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      color: #fefce8;
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .card-body {
+      padding: 0.75rem 0.8rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+      align-items: baseline;
+    }
+
+    .card-title {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .card-price {
+      font-weight: 700;
+      color: #16a34a;
+      font-size: 0.9rem;
+    }
+
+    .card-meta {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.2rem;
+    }
+
+    .chip {
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.65rem;
+    }
+
+    .card-footer {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .card-footer button {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: none;
+      background: #111827;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ROOMMATE & SERVICES SPECIAL LAYOUTS */
+    .roommate-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .swipe-card {
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #0f172a, #1f2937);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .swipe-card::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image: radial-gradient(
+          circle at 0 0,
+          rgba(59, 130, 246, 0.4) 0,
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 100% 100%,
+          rgba(251, 191, 36, 0.35) 0,
+          transparent 55%
+        );
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .swipe-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .swipe-header h3 {
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .swipe-header p {
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .swipe-profile {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.6rem;
+      padding: 0.6rem;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .swipe-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+      font-size: 0.65rem;
+    }
+
+    .swipe-pill {
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(55, 65, 81, 0.9);
+    }
+
+    .swipe-actions {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .swipe-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
+    }
+
+    .swipe-btn.no {
+      color: #f97316;
+    }
+
+    .swipe-btn.yes {
+      color: #22c55e;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .service-card {
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 0.7rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .service-title {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .service-meta {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .service-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.15rem;
+    }
+
+    .service-chip {
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: #fef9c3;
+      color: #92400e;
+      font-size: 0.65rem;
+    }
+
+    .service-cta {
+      margin-top: 0.4rem;
+      font-size: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .service-cta button {
+      border-radius: 999px;
+      border: none;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* STEPS / HOW IT WORKS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.7rem;
+      font-size: 0.75rem;
+    }
+
+    .step-card {
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px dashed rgba(209, 213, 219, 0.9);
+      padding: 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #b91c1c;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .step-title {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .step-text {
+      color: var(--muted);
+    }
+
+    /* CONTACT SECTION */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 0.8rem;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-value {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem 1rem 1.5rem;
+      margin-top: 0.5rem;
+      background: rgba(248, 250, 252, 0.9);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* WHATSAPP FLOAT BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      background: #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #ffffff;
+      box-shadow: 0 12px 28px rgba(34, 197, 94, 0.5);
+      cursor: pointer;
+      z-index: 60;
+      border: 3px solid #bbf7d0;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.65);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .roommate-layout {
+        grid-template-columns: 1fr;
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding-inline: 0.7rem;
+      }
+
+      .hero {
+        margin-top: 0.8rem;
+      }
+
+      .search-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-badge">FH</div>
+        <div>
+          FeelLikeYourHome
+          <div style="font-size:0.7rem;font-weight:400;color:#6b7280;">
+            PGs • Roommates • Home Services
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#pg-section">PGs & Hostels</a>
+        <a href="#roommate-section">Roommate Match</a>
+        <a href="#services-section">Home Services</a>
+        <a href="#how-section">How it works</a>
+        <a href="#contact-section">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="alert('Owner dashboard will open here in a future version.')">
+          PG Owner Login
+        </button>
+        <button class="btn btn-accent" onclick="alert('User login / OTP will connect to backend later.')">
+          Login / Sign up
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          One platform to truly feel like your home
+        </div>
+
+        <h1 class="hero-title">
+          Find a <span>PG, roommate</span> and trusted
+          <span>home services</span> that feel like your home.
+        </h1>
+
+        <p class="hero-sub">
+          FeelLikeYourHome connects students & working professionals with
+          verified PGs, compatible roommates and on-demand electricians,
+          plumbers, cleaners and more – all on a single platform.
+        </p>
+
+        <div class="hero-badges">
+          <span>No brokerage for students</span>
+          <span>Verified PG owners</span>
+          <span>Home service experts</span>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToSection('pg-section')">
+            Start searching PGs
+          </button>
+          <button class="btn btn-outline" onclick="scrollToSection('roommate-section')">
+            Try roommate matching
+          </button>
+        </div>
+
+        <div class="hero-meta">
+          <div>
+            <strong>For students & professionals</strong><br />
+            PGs by location, price, food, gender & more.
+          </div>
+          <div>
+            <strong>For PG owners</strong><br />
+            List rooms, get bookings & request maintenance.
+          </div>
+        </div>
+      </div>
+
+      <!-- SEARCH CARD -->
+      <div class="search-card">
+        <div class="search-header">
+          <div>
+            <div style="font-size:0.8rem;font-weight:600;color:#111827;">
+              Search your next stay
+            </div>
+            <div style="font-size:0.72rem;color:#6b7280;">
+              PGs, hostels, shared rooms & more
+            </div>
+          </div>
+          <div class="search-tabs">
+            <button class="search-tab active" data-target="pg-section">
+              PGs
+            </button>
+            <button class="search-tab" data-target="roommate-section">
+              Roommates
+            </button>
+            <button class="search-tab" data-target="services-section">
+              Services
+            </button>
+          </div>
+        </div>
+
+        <div class="search-fields">
+          <div class="field-group">
+            <span class="field-label">Location / Area</span>
+            <input
+              type="text"
+              class="field-input"
+              placeholder="Eg: Koramangala, Bengaluru"
+              id="search-location"
+            />
+          </div>
+          <div class="field-group">
+            <span class="field-label">Budget (per month)</span>
+            <select id="search-budget">
+              <option value="">Any budget</option>
+              <option>&lt; ₹5,000</option>
+              <option>₹5,000 – ₹8,000</option>
+              <option>₹8,000 – ₹12,000</option>
+              <option>&gt; ₹12,000</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <span class="field-label">Type</span>
+            <select id="search-type">
+              <option value="">Any</option>
+              <option>Gents PG</option>
+              <option>Ladies PG</option>
+              <option>Co-ed</option>
+              <option>1/2/3 Sharing</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tagline">
+          <div>
+            <span class="highlight">Login with OTP</span> • No brokerage •
+            Verified PG owners
+          </div>
+          <button
+            class="btn btn-primary"
+            style="padding-inline:0.9rem;"
+            onclick="handleSearchClick()"
+          >
+            Search now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PG SECTION -->
+    <section class="section" id="pg-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">PGs, Hostels & Co-living Spaces</h2>
+          <p class="section-sub">
+            Filter by location, gender, food, AC, reviews & more.
+          </p>
+        </div>
+        <button class="btn btn-outline" onclick="alert('Advanced filters & map view will come in the full product.')">
+          All filters
+        </button>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-image">
+            <span class="card-tag">Ladies PG • Food</span>
+            <span class="card-badge">4.7 ★ (138 reviews)</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <div>
+                <div class="card-title">Warm Nest Ladies PG</div>
+                <div class="card-meta">Koramangala, Bengaluru • 500 m from main road</div>
+              </div>
+              <div class="card-price">₹9,000/mo</div>
+            </div>
+            <div class="chip-row">
+              <span class="chip">2 & 3 sharing</span>
+              <span class="chip">North & South Indian food</span>
+              <span class="chip">Wi-Fi • Laundry</span>
+            </div>
+            <div class="card-footer">
+              <span>Female only • With food</span>
+              <button onclick="alert('In a real app this will open a full PG detail page.')">
+                View details
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image">
+            <span class="card-tag">Gents PG • No food</span>
+            <span class="card-badge">Instant booking</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <div>
+                <div class="card-title">CitySquare Gents PG</div>
+                <div class="card-meta">BTM Layout, Bengaluru • Near bus stop</div>
+              </div>
+              <div class="card-price">₹6,500/mo</div>
+            </div>
+            <div class="chip-row">
+              <span class="chip">AC & Non-AC</span>
+              <span class="chip">24x7 water</span>
+              <span class="chip">CCTV • Lift</span>
+            </div>
+            <div class="card-footer">
+              <span>Male only • No food</span>
+              <button onclick="alert('In a real app this will open a full PG detail page.')">
+                View details
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image">
+            <span class="card-tag">Co-living</span>
+            <span class="card-badge">Weekly cleaning</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <div>
+                <div class="card-title">Comfort Hive Co-living</div>
+                <div class="card-meta">Mysuru • Near university area</div>
+              </div>
+              <div class="card-price">₹11,500/mo</div>
+            </div>
+            <div class="chip-row">
+              <span class="chip">Co-ed</span>
+              <span class="chip">Gym • Common kitchen</span>
+              <span class="chip">High-speed Wi-Fi</span>
+            </div>
+            <div class="card-footer">
+              <span>Mixed • Work friendly</span>
+              <button onclick="alert('In a real app this will open a full PG detail page.')">
+                View details
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ROOMMATE MATCHING -->
+    <section class="section" id="roommate-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Roommate Matching (Dating-style)</h2>
+          <p class="section-sub">
+            Swipe to like / skip based on lifestyle, habits, budget & move-in date.
+          </p>
+        </div>
+        <button class="btn btn-outline" onclick="alert('Full profile creation + matching logic will be added later.')">
+          Create roommate profile
+        </button>
+      </div>
+
+      <div class="roommate-layout">
+        <div class="swipe-card">
+          <div class="swipe-header">
+            <h3>Meet potential roommates near you</h3>
+            <p>
+              Cleanliness level, sleep schedule, pets, smoking, guests, budget and move-in date – all combined so you can find someone who feels like home.
+            </p>
+          </div>
+
+          <div class="swipe-profile">
+            <div class="avatar">A</div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-weight:600;">Ananya, 21</div>
+                <div style="font-size:0.7rem;color:#9ca3af;">
+                  Budget: ₹8k – ₹10k
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:#e5e7eb;">
+                Student • Night owl • Vegetarian • Non-smoker
+              </div>
+              <div class="swipe-tags">
+                <span class="swipe-pill">Koramangala / BTM</span>
+                <span class="swipe-pill">Clean & organised</span>
+                <span class="swipe-pill">Okay with guests</span>
+                <span class="swipe-pill">Move-in: Jan 10</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="swipe-actions">
+            <button class="swipe-btn no" onclick="alert('Skip profile (front-end only demo).')">
+              ✕
+            </button>
+            <button class="swipe-btn yes" onclick="alert('Liked! In the real app, a match will be created on mutual like.')">
+              ❤
+            </button>
+          </div>
+        </div>
+
+        <div class="card" style="background:rgba(255,255,255,0.98);">
+          <div class="card-body">
+            <div class="card-title" style="margin-bottom:0.3rem;">
+              How roommate matching works
+            </div>
+            <ul style="font-size:0.76rem;color:#4b5563;list-style:disc;padding-left:1rem;display:flex;flex-direction:column;gap:0.25rem;">
+              <li>Fill your profile: photos, bio, habits, budget, preferred locations.</li>
+              <li>Set filters for who you want to live with (gender, budget, pets, smoking etc.).</li>
+              <li>Swipe right to like, left to skip – just like a dating app.</li>
+              <li>When both like each other, it becomes a match & chat unlocks.</li>
+              <li>Plan a meeting, visit PGs together, or directly book your room on FeelLikeYourHome.</li>
+            </ul>
+
+            <div style="margin-top:0.6rem;font-size:0.75rem;color:#6b7280;">
+              Safety first:
+              <strong>phone / ID verification</strong>, report & block options,
+              and admin moderation for every complaint.
+            </div>
+
+            <button
+              class="btn btn-accent"
+              style="margin-top:0.7rem;width:100%;"
+              onclick="alert('This will open the roommate onboarding flow in the full app.')"
+            >
+              Start roommate matching
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOME SERVICES -->
+    <section class="section" id="services-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Home Services for PGs & Tenants</h2>
+          <p class="section-sub">
+            Carpenters, plumbers, electricians, cleaners & more – for users and PG owners.
+          </p>
+        </div>
+        <button class="btn btn-outline" onclick="alert('Service provider listing + booking API will come later.')">
+          View all categories
+        </button>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-title">Electrical</div>
+          <div class="service-meta">
+            Fans, lights, switches, wiring & power issues.
+          </div>
+          <div class="service-chip-row">
+            <span class="service-chip">Starts at ₹199</span>
+            <span class="service-chip">1 hr average</span>
+          </div>
+          <div class="service-cta">
+            <span>Verified & rated electricians.</span>
+            <button onclick="alert('Booking popup for electrical service (future).')">
+              Book now
+            </button>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-title">Plumbing</div>
+          <div class="service-meta">
+            Leakage, tap issues, blocked sink & bathroom repairs.
+          </div>
+          <div class="service-chip-row">
+            <span class="service-chip">Emergency support</span>
+            <span class="service-chip">Parts at MRP</span>
+          </div>
+          <div class="service-cta">
+            <span>For PG owners & tenants.</span>
+            <button onclick="alert('Booking popup for plumbing service (future).')">
+              Book now
+            </button>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-title">Cleaning</div>
+          <div class="service-meta">
+            Room deep cleaning, bathrooms, kitchen & PG common areas.
+          </div>
+          <div class="service-chip-row">
+            <span class="service-chip">Monthly plans</span>
+            <span class="service-chip">PG bulk pricing</span>
+          </div>
+          <div class="service-cta">
+            <span>Ideal for PGs & hostels.</span>
+            <button onclick="alert('Booking popup for cleaning service (future).')">
+              Book now
+            </button>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-title">AC & Appliance Repair</div>
+          <div class="service-meta">
+            AC, fridge, washing machine & geyser servicing.
+          </div>
+          <div class="service-chip-row">
+            <span class="service-chip">Warranty on service</span>
+            <span class="service-chip">Expert technicians</span>
+          </div>
+          <div class="service-cta">
+            <span>On-demand or subscription.</span>
+            <button onclick="alert('Booking popup for AC / appliances (future).')">
+              Book now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">How FeelLikeYourHome works</h2>
+          <p class="section-sub">
+            We’ll later add PG owner dashboard, admin panel & analytics on top of this user site.
+          </p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-title">Discover</div>
+          <div class="step-text">
+            Users search PGs, hostels & co-living by budget, gender, food, distance and reviews.
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-title">Connect</div>
+          <div class="step-text">
+            Roommate matching suggests compatible profiles. After mutual like, chat unlocks.
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-title">Book & Manage</div>
+          <div class="step-text">
+            PG owners manage listings, photos, pricing & occupancy in their dashboard (future phase).
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-title">Maintain</div>
+          <div class="step-text">
+            Home services handle carpentry, electrical, cleaning, AC, pest control etc., with subscription options.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Contact & About FeelLikeYourHome</h2>
+          <p class="section-sub">
+            Edit these details to add your real WhatsApp, email and city when you’re ready.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+91-7676006074</div>
+          <div style="font-size:0.75rem;color:#6b7280;">
+            Students & PG owners can ping us directly for help and onboarding.
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">sshrinidhi.123@gmail.com</div>
+          <div style="font-size:0.75rem;color:#6b7280;">
+            Use this for business enquiries, partnerships and feedback (placeholder).
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-label">Garden city university</div>
+          <div class="contact-value">Bengaluru</div>
+          <div style="font-size:0.75rem;color:#6b7280;">
+            You can update this to whatever city / state you start in first.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> FeelLikeYourHome. All rights reserved.
+        <br />
+        Built for students, professionals & PG owners.
+      </div>
+      <div class="footer-links">
+        <a href="#pg-section">PGs</a>
+        <a href="#roommate-section">Roommates</a>
+        <a href="#services-section">Services</a>
+        <a href="#how-section">How it works</a>
+        <a href="#contact-section">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT BUTTON -->
+  <!-- IMPORTANT: change 91XXXXXXXXXX to your real WhatsApp number without + or 0 -->
+  <a
+    href="https://wa.me/91-7676006074"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    title="Chat with us on WhatsApp"
+  >
+    💬
+  </a>
+
+  <script>
+    // Scroll helpers
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Search tab navigation
+    document.querySelectorAll(".search-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document
+          .querySelectorAll(".search-tab")
+          .forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        const target = tab.getAttribute("data-target");
+        if (target) scrollToSection(target);
+      });
+    });
+
+    // Fake search handler
+    function handleSearchClick() {
+      const location = document.getElementById("search-location").value;
+      const budget = document.getElementById("search-budget").value;
+      const type = document.getElementById("search-type").value;
+
+      let message = "This is a front-end demo of FeelLikeYourHome.\\n\\n";
+      message += "In the real app, we will call backend APIs to:\\n";
+      message += "- Search PGs by location, budget, amenities, gender.\\n";
+      message += "- Show map view & filters.\\n";
+      message += "- Allow instant booking / enquiry.\\n\\n";
+      message += "Your sample search:\\n";
+      message += "Location: " + (location || "Any") + "\\n";
+      message += "Budget: " + (budget || "Any") + "\\n";
+      message += "Type: " + (type || "Any") + "\\n\\n";
+      message += "For now, scroll to the PG section to see sample cards.";
+
+      alert(message);
+      scrollToSection("pg-section");
+    }
+
+    // Footer year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
