@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Register | Stayease</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="container" style="max-width:420px">
+  <h2 style="text-align:center">Create User Account</h2>
+  <p class="muted" style="text-align:center">
+    Find PGs & roommates easily
+  </p>
+
+  <form onsubmit="registerUser(event)">
+    <input placeholder="Full Name" required>
+    <input placeholder="Email or Phone" required>
+    <input type="password" placeholder="Password" required>
+
+    <button class="btn-primary" style="width:100%;margin-top:10px">
+      Register
+    </button>
+  </form>
+
+  <p class="muted" style="text-align:center;margin-top:12px">
+    Already have an account?
+    <a href="user-login.html">Login</a>
+  </p>
+</div>
+
+<script>
+function registerUser(e){
+  e.preventDefault();
+  alert("User registered successfully (backend coming soon)");
+}
+</script>
+
+</body>
+</html>
