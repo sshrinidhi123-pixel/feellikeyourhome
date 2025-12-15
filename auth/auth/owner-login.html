@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owner Login | Stayease</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="container" style="max-width:420px">
+  <h2 style="text-align:center">Owner Login</h2>
+  <p class="muted" style="text-align:center">
+    Login to manage your PG / rooms
+  </p>
+
+  <form onsubmit="loginOwner(event)">
+    <input type="text" placeholder="Email or Phone" required>
+    <input type="password" placeholder="Password" required>
+
+    <button class="btn-primary" style="width:100%;margin-top:10px">
+      Login
+    </button>
+  </form>
+
+  <p class="muted" style="text-align:center;margin-top:12px">
+    New owner? <a href="#">Register your PG</a>
+  </p>
+</div>
+
+<script>
+function loginOwner(e){
+  e.preventDefault();
+  alert("Owner login successful (backend will be connected later)");
+}
+</script>
+
+</body>
+</html>
